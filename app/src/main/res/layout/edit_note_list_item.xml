@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:orientation="vertical">
+  <ImageButton
+      android:id="@+id/media"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="gone"
+      android:src="@drawable/ic_baseline_playlist_add_24"
+      />
+<com.daimajia.swipe.SwipeLayout
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    swipe:leftEdgeSwipeOffset="0dp"
+    swipe:rightEdgeSwipeOffset="0dp">
+
+
+  <LinearLayout
+      android:id="@+id/bottom_wrapper"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:weightSum="3"
+      >
+
+    <ImageButton
+        android:id="@+id/bold"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null"
+        android:gravity="center"
+        android:src="@drawable/bold"
+        android:layout_marginLeft="10dp"
+        />
+
+    <ImageButton
+        android:id="@+id/underline"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/underlined" />
+
+  </LinearLayout>
+
+
+  <LinearLayout
+      android:id="@+id/bottom_wrapper1"
+      android:layout_width="80dp"
+      android:layout_height="match_parent"
+      android:weightSum="1">
+
+    <ImageButton
+        android:id="@+id/addMedia"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null"
+        android:gravity="center"
+        android:src="@drawable/ic_baseline_playlist_add_24" />
+  </LinearLayout>
+
+  <!-- Top View,  Row itemView of RecyclerView -->
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="?android:selectableItemBackground"
+      android:elevation="5dp"
+      android:orientation="vertical"
+      android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+      <EditText
+          android:id="@+id/info"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dp"
+          android:padding="15dp"
+          android:background="@drawable/round_edittext"
+          android:textColor="@color/black"
+          android:textSize="30dp" />
+
+      <ImageButton
+          android:id="@+id/color"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:layout_marginTop="5dp"
+          android:layout_marginBottom="5dp"
+          android:layout_marginStart="5dp"
+          android:layout_marginEnd="5dp"
+          android:layout_alignParentRight="true"
+          android:background="@drawable/rainbow_32" />
+
+    </RelativeLayout>
+  </LinearLayout>
+
+</com.daimajia.swipe.SwipeLayout>
+
+</LinearLayout>

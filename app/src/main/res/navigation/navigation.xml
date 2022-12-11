@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.appprivategalery.myapplication.presentation.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_noteInfoFragment"
+            app:destination="@id/noteInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.appprivategalery.myapplication.presentation.view.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forthcomingFragment"
+        android:name="com.appprivategalery.myapplication.presentation.view.ComeFragment"
+        android:label="fragment_forthcoming"
+        tools:layout="@layout/fragment_come" >
+        <action
+            android:id="@+id/action_forthcomingFragment_to_alarmFragment"
+            app:destination="@id/alarmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteInfoFragment"
+        android:name="com.appprivategalery.myapplication.presentation.view.NoteInfoFragment"
+        android:label="fragment_note_info"
+        tools:layout="@layout/fragment_note_info">
+    <argument
+        android:name="selected_note"
+        app:argType="com.appprivategalery.myapplication.data.model.Note" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.appprivategalery.myapplication.presentation.view.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" >
+        <argument
+            android:name="selected_event"
+            app:argType="com.appprivategalery.myapplication.data.model.Event"
+                    app:nullable="true"
+                    android:defaultValue="@null"
+            />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/alarmFragment"
+        android:name="com.appprivategalery.myapplication.presentation.view.AlarmFragment"
+        android:label="fragment_alarm"
+        tools:layout="@layout/fragment_alarm" >
+        <argument
+            android:name="selected_alarm"
+            app:argType="com.appprivategalery.myapplication.data.model.Alarm"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>

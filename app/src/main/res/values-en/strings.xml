@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">SmartNotes</string>
+
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="greetings">Greetings</string>
+
+  <string name="plan_greetings">What would you like to plan today?</string>
+  <string name="voice_note">Voice note</string>
+  <string name="record">Record what\'s on your mind</string>
+  <string name="notes">Notes</string>
+  <string name="title">Title</string>
+  <string name="problem">Problem</string>
+  <string name="note_title">Note title</string>
+  <string name="alarms">Alarms</string>
+  <string name="forthcoming_events">Forthcoming events</string>
+  <string name="event">Event</string>
+  <string name="event_name">Event name</string>
+  <string name="event_date">Event date</string>
+  <string name="event_time">Event time</string>
+  <string name="notification_date">Notification date</string>
+  <string name="notification_time">Notification time</string>
+  <string name="event_description">Event description</string>
+  <string name="mon">MON</string>
+  <string name="tue">TUE</string>
+  <string name="wed">WED</string>
+  <string name="thu">THU</string>
+  <string name="fri">FRI</string>
+  <string name="sat">SAT</string>
+  <string name="sun">SUN</string>
+  <string name="month_year">Month Year</string>
+  <string name="alarm">Alarm</string>
+  <string name="label">Label</string>
+  <string name="repeat">Repeat</string>
+  <string name="vibration">Vibration</string>
+  <string name="everyday">Everyday</string>
+  <string name="title_of_alarm">Title of alarm</string>
+  <string name="turn_off">Turn Off !</string>
+  <string name="good_moring">Good morning</string>
+  <string name="good_afternoon">Good afternoon</string>
+  <string name="good_evening">Good evening</string>
+  <string name="hello">Hello</string>
+  <string name="calendar">Calendar</string>
+  <string name="home">Home</string>
+  <string name="forthcoming">Forthcoming</string>
+  <string name="notification">Something is going on just right now check it out!</string>
+  <string name="planed"> is planned on </string>
+  <string name="at"> at </string>
+  <string name="notificatin_off">Tap to turn off the alarm</string>
+  <string name="dialog_permission_title">Permission required</string>
+  <string name="dialog_permission_default_message">Default message</string>
+  <string name="dialog_permission_button_positive">OK</string>
+</resources>
