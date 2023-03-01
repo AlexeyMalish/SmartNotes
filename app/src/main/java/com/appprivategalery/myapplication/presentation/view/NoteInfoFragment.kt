@@ -73,12 +73,19 @@ class NoteInfoFragment : Fragment() {
 
         fragmentNoteInfoBinding.myRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         // Creating Adapter object
-        mAdapter = SwipeAdapter(noteList, requireContext())
+        mAdapter = SwipeAdapter(requireContext())
+        mAdapter.differ.submitList(noteList)
         mAdapter.mode = Attributes.Mode.Single
-        fragmentNoteInfoBinding.myRecyclerView.adapter = mAdapter
+
+
 
         mAdapter.setOnItemClickListener(object : SwipeAdapter.ClickListener {
-            override fun onItemClick(v: View, imageView: ImageView, adapterPosition: Int) {
+            override fun onItemClick(
+                addItem: Boolean,
+                imageView: ImageView?,
+                adapterPosition: Int
+            ) {
+                if (!addItem) {
 //                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
 //                    try {
 //                        val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
@@ -100,9 +107,9 @@ class NoteInfoFragment : Fragment() {
 //                                showErrorDialog(result)
 //                            }
 //                        }
-               // } else {
+                    // } else {
                     permissionManager
-                        .request(Permission.Storage,  Permission.Camera)
+                        .request(Permission.Storage, Permission.Camera)
                         .rationale("We want permission for Storage (Read+Write), Location (Fine+Coarse) and Camera")
                         .checkDetailedPermission { result ->
                             if (result.all { it.value }) {
@@ -111,31 +118,33 @@ class NoteInfoFragment : Fragment() {
                                 showErrorDialog(result)
                             }
                         }
-               // }
+                    // }
 
-                notUpdate = true
-                pickerDialog {
-                    setTitle("Choice")
-                    setTitleTextBold(true)
-                    setTitleTextSize(22f)
-                    setItems(
-                        setOf(
-                            ItemModel(ItemType.Camera),
-                           // ItemModel(ItemType.Video),
-                            ItemModel(ItemType.ImageGallery(MimeType.Image.Png)),
+                    notUpdate = true
+                    pickerDialog {
+                        setTitle("Choice")
+                        setTitleTextBold(true)
+                        setTitleTextSize(22f)
+                        setItems(
+                            setOf(
+                                ItemModel(ItemType.Camera),
+                                // ItemModel(ItemType.Video),
+                                ItemModel(ItemType.ImageGallery(MimeType.Image.Png)),
 //                            ItemModel(ItemType.VideoGallery()),
 //                            ItemModel(ItemType.AudioGallery(MimeType.Audio.Mp3)),
 //                            ItemModel(ItemType.Files()),
+                            )
                         )
-                    )
-                    setListType(PickerDialog.ListType.TYPE_GRID)
-                }.setPickerCloseListener{ type, uris ->
-                    Toast.makeText(requireContext(), uris.toString(), Toast.LENGTH_LONG).show()
-                    notUpdate = false
+                        setListType(PickerDialog.ListType.TYPE_GRID)
+                    }.setPickerCloseListener { type, uris ->
+                        Toast.makeText(requireContext(), uris.toString(), Toast.LENGTH_LONG).show()
+                        notUpdate = false
 //        val ivPreview = findViewById<ImageView>(R.id.ivPreview)
-                    noteList[adapterPosition].urlToMedia = uris.first().toString()
-                    imageView.visibility = View.VISIBLE
-                    fragmentNoteInfoBinding.myRecyclerView.adapter?.notifyItemChanged(adapterPosition)
+                        noteList[adapterPosition].urlToMedia = uris.first().toString()
+                        imageView!!.visibility = View.VISIBLE
+                        fragmentNoteInfoBinding.myRecyclerView.adapter?.notifyItemChanged(
+                            adapterPosition
+                        )
 
 //        when (type) {
 //          ItemType.Camera -> Glide.with(requireContext())
@@ -149,10 +158,30 @@ class NoteInfoFragment : Fragment() {
 ////          is ItemType.Files -> println(uris.toTypedArray().contentToString())
 //            else -> {}
 //        }
-                }.show()
+                    }.show()
+                }
+
+                else {
+                    if (mAdapter.itemCount-1 == adapterPosition) {
+                        noteList.add(
+                            NoteItem(
+                                adapterPosition+1,
+                                "",
+                                R.color.white,
+                                isBold = false,
+                                underline = false,
+                                urlToMedia = ""
+                            )
+                        )
+                        mAdapter.differ.submitList(noteList)
+                    }
+                }
             }
 
+
         })
+
+        fragmentNoteInfoBinding.myRecyclerView.adapter = mAdapter
 
 
         /* Scroll Listeners */

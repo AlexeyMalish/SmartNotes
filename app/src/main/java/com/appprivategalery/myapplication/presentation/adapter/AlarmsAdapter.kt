@@ -55,18 +55,17 @@ class AlarmsAdapter : RecyclerView.Adapter<AlarmsAdapter.AlarmsViewHolder>() {
         val alarm = differ.currentList[position]
         holder.bind(alarm)
 
-        //holder.binding.liSwAlarmSwitch.setOnCheckedChangeListener() DOESNT WORK IN THIS UTILITY
 
         holder.binding.alarmSwitch.setOnClickListener {
             alarm.isTurnedOn = holder.binding.alarmSwitch.isChecked
             alarmsViewModel.updateAlarm(alarm)
 
             if (alarm.isTurnedOn == true) {
-                alarmUtils.createAlarmNotificationChannel(context!!)
-                alarmUtils.scheduleAlarm(context!!, alarm!!)
+                alarmUtils.createAlarmNotificationChannel(context)
+                alarmUtils.scheduleAlarm(context, alarm!!)
             } else {
                 alarmUtils.createAlarmNotificationChannel(context)
-                alarmUtils.cancelAlarm(context!!, alarm)
+                alarmUtils.cancelAlarm(context, alarm)
             }
         }
     }

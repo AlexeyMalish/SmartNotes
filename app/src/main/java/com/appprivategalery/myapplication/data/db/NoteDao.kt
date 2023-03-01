@@ -1,6 +1,5 @@
 package com.appprivategalery.myapplication.data.db
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.appprivategalery.myapplication.data.model.Note
 import kotlinx.coroutines.flow.Flow

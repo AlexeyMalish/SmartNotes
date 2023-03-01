@@ -11,9 +11,9 @@ import com.appprivategalery.myapplication.domain.usecase.note.SaveNoteUseCase
 import com.appprivategalery.myapplication.domain.usecase.note.UpdateNoteUseCase
 import kotlinx.coroutines.launch
 
-class NotesViewModel(//change in viewModel = change in viewModelFactory
+class NotesViewModel(
     private val app: Application,
-    private val saveNoteUseCase: SaveNoteUseCase,//provide it in DI.UseCaseModule
+    private val saveNoteUseCase: SaveNoteUseCase,
     private val savedNotesUseCase: SavedNotesUseCase,
     private val updateNoteUseCase: UpdateNoteUseCase,
     private val deleteNoteUseCase: DeleteNoteUseCase
